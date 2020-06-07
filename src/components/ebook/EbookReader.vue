@@ -217,6 +217,7 @@
         })
       },
       initEpub(url) {
+		console.log('url:'+url)
         this.book = new Epub(url)
         this.setCurrentBook(this.book)
         this.initRendition()
@@ -259,6 +260,8 @@
     mounted() {
       const books = this.$route.params.fileName.split('|')
       const fileName = books[1]
+	  console.log('fileName:'+fileName)
+	  console.log('process.env.VUE_APP_EPUB_URL:'+process.env.VUE_APP_EPUB_URL)
       getLocalForage(fileName, (err, blob) => {
         if (!err && blob) {
           this.setFileName(books.join('/')).then(() => {
